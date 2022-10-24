@@ -1,6 +1,6 @@
 package lexicon.spring.JPA_Assignment.data;
 
-import lexicon.spring.JPA_Assignment.model.Ingredient;
+import lexicon.spring.JPA_Assignment.model.entity.Ingredient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

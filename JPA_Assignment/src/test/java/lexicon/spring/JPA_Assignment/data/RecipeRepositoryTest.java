@@ -1,14 +1,12 @@
 package lexicon.spring.JPA_Assignment.data;
 
-import lexicon.spring.JPA_Assignment.model.*;
+import lexicon.spring.JPA_Assignment.model.entity.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
@@ -59,6 +57,7 @@ class RecipeRepositoryTest {
         tomatoPulavRecipeIngredient2.addIngredient(tomato);
         tomatoPulavRecipeIngredient3.addIngredient(turmeric);
         tomatoPulavRecipeIngredient4.addIngredient(peas);
+
 
         //Palak Recipe Ingredients Measurement
         RecipeIngredient palakPaneerIngredient1=new RecipeIngredient(250,Measurement.G);
@@ -129,6 +128,9 @@ class RecipeRepositoryTest {
 
         recipeRepository.save(tomatoPulav);
         recipeRepository.save(palakPaneer);
+//Added on 21st October
+        tomatoPulavRecipeIngredient.addRecipe(tomatoPulav);
+
     }
 
 
@@ -143,7 +145,7 @@ class RecipeRepositoryTest {
     @Test
     void findRecipesByRecipeIngredientsIngredientIngredientName() {
 
-        Set<Recipe> found=recipeRepository.findRecipesByRecipeIngredientsIngredientIngredientName("rice");
+        Collection<Recipe> found=recipeRepository.findRecipesByRecipeIngredientsIngredientIngredientName("rice");
         System.out.println("anusha "+found.size());
         found.forEach(recipe -> System.out.println("hi "+recipe));
 
@@ -156,7 +158,7 @@ class RecipeRepositoryTest {
     @Test
     void findRecipesByCategoriesCategory() {
 
-        Set<Recipe> found=recipeRepository.findRecipesByCategoriesCategory("vegan");
+        Collection<Recipe> found=recipeRepository.findRecipesByCategoriesCategory("vegan");
         assertEquals(1,found.size());
         assertNotNull(found.stream().anyMatch(recipe -> "Tomato pulav".equalsIgnoreCase(recipe.getRecipeName())));
     }

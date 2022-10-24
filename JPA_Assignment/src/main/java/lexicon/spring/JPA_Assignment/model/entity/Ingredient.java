@@ -1,4 +1,4 @@
-package lexicon.spring.JPA_Assignment.model;
+package lexicon.spring.JPA_Assignment.model.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

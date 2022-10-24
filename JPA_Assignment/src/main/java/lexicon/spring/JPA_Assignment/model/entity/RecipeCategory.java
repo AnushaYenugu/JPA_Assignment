@@ -1,10 +1,7 @@
-package lexicon.spring.JPA_Assignment.model;
+package lexicon.spring.JPA_Assignment.model.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 @Entity
 public class RecipeCategory {
@@ -14,7 +11,7 @@ public class RecipeCategory {
     private String category;
     @ManyToMany(
             mappedBy = "categories",
-            cascade = {CascadeType.REFRESH,CascadeType.DETACH})
+            cascade = {CascadeType.ALL,CascadeType.REFRESH,CascadeType.DETACH})
     Set<Recipe> recipe=new HashSet<>();
 
     public RecipeCategory() {

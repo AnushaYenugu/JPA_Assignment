@@ -2,6 +2,7 @@ package lexicon.spring.JPA_Assignment;
 
 import lexicon.spring.JPA_Assignment.data.*;
 import lexicon.spring.JPA_Assignment.model.*;
+import lexicon.spring.JPA_Assignment.model.entity.RecipeIngredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -34,6 +35,8 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        /**
 // Tomato Pulav Ingredients
         Ingredient tomato=new Ingredient("tomato");
         Ingredient turmeric=new Ingredient("tumeric spice");
@@ -149,6 +152,13 @@ public class MyCommandLineRunner implements CommandLineRunner {
       Set<Recipe> recipeCategory=recipeRepository.findRecipesByCategoriesCategory("Vegitarian");
       recipeCategory.forEach(System.out::println);
 
+*/
+
+       List<RecipeIngredient> all= recipeIngredientRepository.findAll();
+        for (RecipeIngredient ingredient:all) {
+            System.out.println(ingredient);
+
+        }
 
 
     }

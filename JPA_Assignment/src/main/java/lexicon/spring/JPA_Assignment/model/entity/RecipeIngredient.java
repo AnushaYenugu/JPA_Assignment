@@ -1,4 +1,4 @@
-package lexicon.spring.JPA_Assignment.model;
+package lexicon.spring.JPA_Assignment.model.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -10,10 +10,10 @@ public class RecipeIngredient {
     private int recipeIngredientId;
     private double amount;
     private Measurement measurement;
-
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
+//REmoved CascadeType.Detach
+    @ManyToOne(cascade = {CascadeType.ALL,CascadeType.REFRESH,CascadeType.DETACH})
     Ingredient ingredient;
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
+    @ManyToOne(cascade = {CascadeType.ALL,CascadeType.REFRESH})
     @JoinColumn(name = "recipe_id")
     Recipe recipe;
 
@@ -53,7 +53,10 @@ public class RecipeIngredient {
         if(ingredientToBeAdded==null) throw new IllegalArgumentException("Ingredient is null");
           ingredientToBeAdded.addRecipeIngredient(this);
     }
-
+    public void addRecipe(Recipe recipeToBeAdded){
+        if(recipeToBeAdded==null) throw new IllegalArgumentException("Ingredient is null");
+       recipeToBeAdded.addRecipeIngredients(this);
+    }
     public void removeIngredient(Ingredient ingredientToBeAdded){
         if(ingredientToBeAdded==null) throw new IllegalArgumentException("Ingredient is null");
 

@@ -1,4 +1,4 @@
-package lexicon.spring.JPA_Assignment.model;
+package lexicon.spring.JPA_Assignment.model.entity;
 
 import javax.persistence.*;
 import java.util.*;
@@ -14,9 +14,9 @@ public class Recipe {
     @JoinColumn(name = "recipe_instruction_id")
     RecipeInstruction recipeInstruction;
 
-    @OneToMany(mappedBy = "recipe", cascade = {CascadeType.REFRESH, CascadeType.DETACH})
+    @OneToMany(mappedBy = "recipe", cascade = {CascadeType.REFRESH, CascadeType.ALL,CascadeType.DETACH})
             List<RecipeIngredient> recipeIngredients;
-    @ManyToMany(cascade = {CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToMany(cascade = {CascadeType.REFRESH,CascadeType.ALL, CascadeType.DETACH})
     @JoinTable(name = "category_recipe", joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     Set<RecipeCategory> categories = new HashSet<>();
