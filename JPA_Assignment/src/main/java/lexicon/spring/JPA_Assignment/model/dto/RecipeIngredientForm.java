@@ -17,7 +17,7 @@ public class RecipeIngredientForm {
    // private int recipeIngredientId;
     private double amount;
     private Measurement measurement;
-    Ingredient ingredient;
+    IngredientForm ingredient;
     //Recipe recipe;
   // int recipeIdForIngredient;
 }

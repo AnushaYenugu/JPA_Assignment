@@ -55,7 +55,9 @@ public class RecipeIngredient {
     }
     public void addRecipe(Recipe recipeToBeAdded){
         if(recipeToBeAdded==null) throw new IllegalArgumentException("Ingredient is null");
-       recipeToBeAdded.addRecipeIngredients(this);
+      //  recipeToBeAdded.addRecipeIngredients(this);
+        this.setRecipe(recipeToBeAdded);
+
     }
     public void removeIngredient(Ingredient ingredientToBeAdded){
         if(ingredientToBeAdded==null) throw new IllegalArgumentException("Ingredient is null");
